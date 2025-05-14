@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'django_browser_reload',
-    'test_tailwind'
+    'test_tailwind',
+    'users',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -128,3 +129,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#setting default user model 
+AUTH_USER_MODEL = "users.User" 
