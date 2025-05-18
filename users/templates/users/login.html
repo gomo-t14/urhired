@@ -1,0 +1,21 @@
+{%extends 'users/usersbase.html'%}
+{% load crispy_forms_tags %}
+
+{%block content%}
+ <h1 class="text-8xl font-bold">Log In</h1>
+<div id="loginform" class="flex items-center justify-center h-screen" >
+   
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Login</button>
+    </form>
+
+    <!--temp logout button-->
+    <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+    
+{%endblock%}
+    

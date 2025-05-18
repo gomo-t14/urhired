@@ -1,0 +1,25 @@
+{% load static tailwind_tags %} <!--from django-tailwind-->
+{% load tailwind_filters %}<!--from crispy-tailwind use the crispy filter-->
+{% load crispy_forms_tags %}<!--from crispy tailwind to use the crispy tag-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{%endblock %}</title>
+     <style>
+        .asteriskField {
+            display: none;
+        }
+        fieldset label {
+            font-weight: bold;
+        }
+    </style>
+    {% tailwind_css %} <!--tailwind link for theme app-->
+</head>
+<body>
+    {% block content%}
+    {%endblock %}
+</body>
+</html>
