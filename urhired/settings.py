@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users',
     "crispy_forms",
     "crispy_tailwind",
+    'django_cotton',
 ]
 
 TAILWIND_APP_NAME = 'theme'

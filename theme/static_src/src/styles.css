@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-
-   themes: light --coorperate, dark --night;
+  themes: light --default , business --prefersdar;
 
  }
 /**

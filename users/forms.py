@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm ,AuthenticationForm
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset,  HTML , Column , Field , Row , ButtonHolder
+from crispy_forms.layout import Layout, Fieldset,  HTML , Column , Field , Row , Div
 from crispy_tailwind.layout import Submit
 from crispy_tailwind.tailwind import CSSContainer 
 
@@ -35,20 +35,24 @@ class RegisterForm(forms.ModelForm):
             user.save() #saves user to db 
         return user
 
+
     #here we specify the helper to  customise the form
     def __init__(self, *args, **kwargs):
         super().__init__( *args, **kwargs)
         self.helper = FormHelper()
         self.helper.layout = Layout (
-            Column(
-            Fieldset(' ' ,
-            Field('email' , wrapper_class = 'bg-blue-500'),
-            Field('nationality'),
-            Field('password1',),
-            Field('password2',),
+            Div(
+            Fieldset('Register' ,
+            Field('email' , placeholder = 'Email Address', css_class='input '),
+            Field('nationality',placeholder = 'Nationality', css_class='input '),
+            Field('password1',placeholder = '********', css_class='input '),
+            Field('password2',placeholder = '********', css_class='input'),
+            Submit('submit', 'Register', css_class='btn btn-soft btn-primary'),
+            css_class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow-md text-4xl"
             ),
+            css_class= "mx-auto"
         ) ,
-        Submit('submit', 'Register', css_class='btn btn-primary-300 py-5'),
+      
         )
 
 #form for creating super user
