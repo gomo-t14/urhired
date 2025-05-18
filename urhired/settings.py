@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,10 +43,16 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'test_tailwind',
     'users',
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r'C:\\Program Files\\nodejs\\npm.cmd'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,3 +139,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #setting default user model 
 AUTH_USER_MODEL = "users.User" 
+
+#login redirect url
+LOGIN_REDIRECT_URL =  reverse_lazy('home')
