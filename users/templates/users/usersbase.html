@@ -1,6 +1,8 @@
 {% load static tailwind_tags %} <!--from django-tailwind-->
 {% load tailwind_filters %}<!--from crispy-tailwind use the crispy filter-->
 {% load crispy_forms_tags %}<!--from crispy tailwind to use the crispy tag-->
+{%load static%}
+{%load%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +10,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title%}{%endblock %}</title>
+   
+
      <style>
         .asteriskField {
             display: none;
@@ -15,10 +19,43 @@
         fieldset label {
             font-weight: bold;
         }
+
+        .typewriter-container {
+  width: 100%;
+  max-width: 90%;  /* or something suitable to the container */
+  font-family: monospace;
+  font-size: 1.5em;
+  white-space: normal; /* allow wrapping */
+  overflow-wrap: break-word;
+  overflow: hidden;
+  min-height: 4.5em;
+  position: relative;
+}
+
+.typewriter-text {
+  display: none;  /* hide all by default */
+  margin-bottom: 1em;
+}
+
+/* The visible paragraph will get typing animation */
+.typewriter-text.active {
+  display: block;
+  width: 100%;    /* start width zero, expand with JS */
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  50% { border-color: yellow }
+}
+
+        
     </style>
     {% tailwind_css %} <!--tailwind link for theme app-->
 </head>
+
 <body>
+  
+
     {% block content%}
     {%endblock %}
 </body>

@@ -1,21 +1,190 @@
-{%extends 'users/usersbase.html'%}
+{% extends 'users/usersbase.html' %}
 {% load crispy_forms_tags %}
+{%load static %}
 
-{%block content%}
- <h1 class="text-8xl font-bold">Log In</h1>
-<div id="loginform" class="flex items-center justify-center h-screen" >
+
+{% block content %}
+
+
+
+
+<section id="AboutUS_Section" class="flex flex-col md:flex-row min-h-screen font-[Georgia]">
+    <div
+  class="bg-base-300 w-full md:w-1/2 flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 lg:px-20 py-10 overflow-y-auto drop-shadow-md min-h-[50vh] md:min-h-screen"
+>
+  <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold text-primary mb-3">
+    Ready to Find Your Next Opportunity?
+  </h1>
+
+  <div
+    class="carousel rounded-box w-full max-w-xs sm:max-w-sm md:max-w-md relative min-h-[22.5rem] flex items-center justify-center"
+  >
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+     
+        src="{% static 'images/customer-service-1-5.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Beautiful mountain landscape"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/construction-worker-72.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Calm lake at sunset"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/bartender-25.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="City skyline at night"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/factory-worker-58.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Green forest trail"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/financial-analyst-74.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Snowy mountain peaks"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/receptionist-1-13.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Golden wheat field"
+      />
+    </div>
+
+    <div class="carousel-item w-full absolute inset-0 flex items-center justify-center">
+      <img
+        src="{% static 'images/product-manager-8.png'%}"
+        class="max-w-full max-h-[22.5rem] object-contain"
+        alt="Ocean waves crashing"
+      />
+    </div>
+
+    <!-- Caption -->
+    <div
+      id="carousel-caption"
+      class="absolute bottom-0 left-1/2 transform -translate-x-1/2 mb-3 bg-white bg-opacity-70 px-3 py-1 rounded text-center text-sm sm:text-base md:text-lg font-medium text-gray-700"
+      style="width: fit-content;"
+    ></div>
+  </div>
+  <!-- Add below the carousel inside the left side container (below <div id="carousel-caption" ...>) -->
+
+<div class="mt-8 text-center px-4 sm:px-6 md:px-8 lg:px-12">
+
+  <p class="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+    Discover thousands of roles tailored just for you—from the frontline to the boardroom. Whether you're starting out or moving up, <span class="text-primary text-2xl">urhired</span> connects you to the jobs that match your skills, passion, and goals.
+  </p>
+</div>
+
+</div>
+
+
+
+
+<script>
+  const carousel = document.querySelector(".carousel");
+  const items = carousel.querySelectorAll(".carousel-item");
+  const captionDiv = document.getElementById("carousel-caption");
+
+  const captions = [
+    "Customer Service",
+    "Construction Worker",
+    "Barista",
+    "Factory Worker",
+    "Financial Analyst",
+    "Receptionist",
+    "Product Manager",
+  ];
+
+  let currentIndex = 0;
+  const totalItems = items.length;
+
+  function showSlide(index) {
+    items.forEach((item, i) => {
+      item.style.display = i === index ? "flex" : "none";
+    });
+    captionDiv.textContent = captions[index];
+  }
+
+  showSlide(currentIndex);
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalItems;
+    showSlide(currentIndex);
+  }, 3000);
+</script>
+
+<div >
+      <a href="{% static 'users/images/construnctionworker.svg' %}">
+    </div>
+
    
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit">Login</button>
-    </form>
+  </div>
 
-    <!--temp logout button-->
-    <form method="post" action="{% url 'logout' %}">
+  <!-- Right Side Container -->
+  <div class="w-full md:w-1/2 relative flex items-center justify-center px-4 py-10 sm:px-8 md:px-20 md:py-16 bg-white min-h-[50vh] md:min-h-screen">
+
+    <!-- Logo (top-left of form section) -->
+    <div class="absolute top-4 left-4 z-50">
+      <a href="{% url 'home' %}">
+      <img src="/static/images/logo_bg.png" alt="UrHired Logo" class="h-10 sm:h-12 md:h-14 lg:h-16 w-auto" />
+    </div>
+
+    <!-- Log In Button (top-right of form section) -->
+<div class="absolute top-4 right-4 flex items-center space-x-1 text-sm sm:text-base">
+  <span>Create an account</span>
+  <a href="{% url 'register' %}" class="btn btn-xs sm:btn-sm md:btn-md btn-link">
+    Register
+  </a>
+</div>
+
+
+
+
+<!-- Centered container -->
+<div id="loginform" class="w-full max-w-md mx-auto mt-10">
+     <div class="text-center mb-6">
+    <h2 class="text-2xl sm:text-3xl font-bold text-primary">
+      Welcome Back! 👋
+    </h2>
+    <p class="text-sm sm:text-base text-gray-600 mt-2">
+      Let’s get you hired. Log in and unlock your next opportunity.
+    </p>
+  </div>
+  <!-- Login form -->
+  <form method="post" class="flex flex-col justify-center space-y-4">
     {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
-    
+    {% crispy form %}
+  </form>
+  
+
+
+</div>
+
+ 
+    </div>
+
+  </div>
+
+</section>
+
+
+
+   
 {%endblock%}
     

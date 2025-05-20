@@ -27,6 +27,8 @@ class RegisterView(CreateView):
 def home_view(request):
     return render(request, 'users/home.html')
 
+
+
 #edits user 
 @login_required
 def EditProfileView(request):

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from django.urls import reverse_lazy
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +47,11 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_tailwind",
     'django_cotton',
+    #'dj-svg',
+
 ]
+
+
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r'C:\\Program Files\\nodejs\\npm.cmd'
@@ -81,6 +86,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+SVG_DIRS=[
+    os.path.join(BASE_DIR, 'svg')
 ]
 
 WSGI_APPLICATION = 'urhired.wsgi.application'

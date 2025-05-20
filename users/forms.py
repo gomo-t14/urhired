@@ -65,6 +65,22 @@ class CustomUserCreationForm(UserCreationForm):
 class CustomLoginForm(AuthenticationForm):
     username = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'autofocus': True}))
 
+    def __init__(self, *args, **kwargs):
+        super().__init__( *args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout (
+            Div(
+            Fieldset('Log In' ,
+            Field('username' , placeholder = 'Email Address', css_class='input '),
+            Field('password',placeholder = '********', css_class='input '),
+            Submit('submit', 'Register', css_class='btn btn-soft btn-primary'),
+            css_class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4 shadow-md text-4xl"
+            ),
+            css_class= "mx-auto"
+        ) ,
+      
+        )
+
 
 #form to update email or nationality
 class UserUpdateForm(CustomUserCreationForm):
