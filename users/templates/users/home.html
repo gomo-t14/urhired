@@ -7,5 +7,19 @@
 </head>
 <body>
     <h1>Home </h1>
+    {% if user.is_authenticated %}
+<form method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+{% endif %}
+
+h2>Are you sure you want to delete your account?</h2>
+
+<form method="post" action = "{%url 'delete_account'%}">
+  {% csrf_token %}
+  <button type="submit">Yes, delete my account</button>
+  <a href="{% url 'profile' %}">Cancel</a>
+</form>
 </body>
 </html>

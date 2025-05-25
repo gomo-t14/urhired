@@ -47,11 +47,14 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_tailwind",
     'django_cotton',
-    #'dj-svg',
+    'spiders',
 
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'admin@example.com'
 
+LOGOUT_REDIRECT_URL = 'login'
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = r'C:\\Program Files\\nodejs\\npm.cmd'

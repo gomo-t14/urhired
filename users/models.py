@@ -45,3 +45,18 @@ class User(AbstractBaseUser,PermissionsMixin):
 
     def __str__(self): #to be able to view user emails in admin panel 
         return self.email
+    
+#Profile model
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    role = models.CharField(max_length=255, default='Unemployed')  # fixed typo: Role → role
+    company = models.CharField(max_length=255, blank=True)         # fixed typo: Company → company
+    linkedin_url = models.URLField(blank=True)
+
+    def __str__(self):
+        return f'Profile of {self.user.email}'
+
+    @property
+    def nationality(self):
+        return self.user.nationality
+    

@@ -1,10 +1,11 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm ,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm ,AuthenticationForm ,PasswordResetForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset,  HTML , Column , Field , Row , Div
 from crispy_tailwind.layout import Submit
 from crispy_tailwind.tailwind import CSSContainer 
+from .models import Profile
 
 
 #instantiate the user model
@@ -85,3 +86,28 @@ class CustomLoginForm(AuthenticationForm):
 #form to update email or nationality
 class UserUpdateForm(CustomUserCreationForm):
     pass
+
+
+
+#Password reset form 
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(
+        label="Email",
+        max_length=254,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter your registered email address',
+            'autocomplete': 'email'
+        })
+    )
+
+    #form to edit profile
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['role', 'company', 'linkedin_url']
+        widgets = {
+            'role': forms.TextInput(attrs={'class': 'form-control'}),
+            'company': forms.TextInput(attrs={'class': 'form-control'}),
+            'linkedin_url': forms.URLInput(attrs={'class': 'form-control'}),
+        }
